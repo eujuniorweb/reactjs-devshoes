@@ -11,12 +11,12 @@ import { Container, ProductTable, Total } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/format';
 
-function Cart({ cart, removeFromCart, updateAmount, total }) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
   return (
     <Container>
@@ -38,7 +38,7 @@ function Cart({ cart, removeFromCart, updateAmount, total }) {
               </td>
               <td>
                 <strong>{product.title}</strong>
-                <span>{product.proceFormated}</span>
+                <span>{product.priceFormatted}</span>
               </td>
               <td>
                 <div>
